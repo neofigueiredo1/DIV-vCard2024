@@ -1,0 +1,47 @@
+<IfModule mod_rewrite.c>
+	
+	Options +FollowSymLinks
+	RewriteEngine On
+	RewriteBase /
+
+	RewriteCond %{HTTPS} off
+	RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^webhook/(.*)$ /webhook/index.php [L,QSA]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^xml/(.*)$ /xml/index.php [L,QSA]
+
+	RewriteRule ^pedido-concluido/(.*)/(.*)$ /index.php?pagina=31&pcodigo=$1 [L]
+
+	RewriteRule ^index\.php$ - [L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule . /index.php [L]
+
+</IfModule>
+
+
+<Files wp-content/uploads/*.php>
+deny from all
+</Files>
+
+<Files wp-content/uploads/*.phtml>
+deny from all
+</Files>
+
+<Files wp-content/uploads/*.php3>
+deny from all
+</Files>
+
+<Files wp-content/uploads/*.php4>
+deny from all
+</Files>
+
+<Files wp-content/uploads/*.php5>
+deny from all
+</Files>

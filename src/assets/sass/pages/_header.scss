@@ -1,0 +1,20 @@
+header{
+
+	width: 100%;
+	height: auto;
+	background-color: #032859;
+	position: absolute;
+	z-index: 9999;
+	padding: 10px;
+	transition: all 0.5s ease;
+	opacity:0;
+}
+
+.heading{
+	height: 80px;
+}
+
+header:hover{
+	transition: all 0.5s ease;
+	opacity:1;
+}
