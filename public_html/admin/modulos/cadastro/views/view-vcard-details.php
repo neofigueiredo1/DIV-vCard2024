@@ -9,6 +9,8 @@ $cadastroLinks = self::getCadastroLinks($cadastroId);
 
 $cadastro = $cadastro[0];
 
+$descritivo = $cadastro['descricao'];
+
 ?>
 
 <style type="text/css">
@@ -149,11 +151,14 @@ $cadastro = $cadastro[0];
             <h3 class="mt-2"><?php echo $cadastro['nome_informal']; ?></h3>
 			<span class="mt-1 clearfix"><strong><?php echo $cadastro['empresa_cargo']; ?></strong> <br/> <?php echo $cadastro['empresa_nome']; ?></span>
 			
-			<hr class="bg-white" >
-			
-			<small class="mt-4" style="font-size:13px; text-align:justify;place-items:initial;" ><?php echo $cadastro['descricao']; ?></small>
+			<?php if( trim(strip_tags($descritivo)) != "" ): ?>
+				<hr class="bg-white" >
+				<small class="mt-4" style="font-size:13px; text-align:justify;place-items:initial;" ><?php echo $descritivo; ?></small>
+				<hr class="bg-white" >
+			<?php else: ?>
+				<hr class="bg-transparent" >
+			<?php endif ?>
 
-			<hr class="bg-white" >
 
 		<?php foreach($cadastroLinks as $key => $linkInfo):?>
 			<div class="links-buttons"> 
@@ -166,31 +171,6 @@ $cadastro = $cadastro[0];
 			</div>
 		<?php endforeach ?>
 
-			<!-- <div class="links-buttons"> 
-				<a href="phone:+55<?php echo Text::getOnlyNumber($cadastro['celular']) ?>" class="btn btn-outline-light link-button">
-					<i class="fab fa-whatsapp"></i> 
-					<div class="flex-fill h-100 d-flex align-items-center justify-content-start pl-3" style="font-size:15px;" >
-						+55 <?php echo $cadastro['celular'] ?>
-					</div>
-				</a> 
-			</div>
-
-			<div class="links-buttons"> 
-				<a href="https://<?php echo str_replace("https://","",$cadastro['site']); ?>" class="btn btn-outline-light link-button" target="_blank">
-					<i class="fas fa-external-link-alt"></i>
-					<div class="flex-fill h-100 d-flex align-items-center justify-content-start pl-3" style="font-size:15px;" >
-						<?php echo str_replace("https://","",$cadastro['site']); ?>
-					</div>
-				</a> 
-			</div> -->
-
-			<!-- <div class="d-flex justify-content-center py-3"> 
-				<a href="#" class="neo-button"><i class="fab fa-instagram"></i> </a> 
-				<a href="#" class="neo-button"><i class="fab fa-linkedin fa-1x"></i></a> 
-				<a href="#" class="neo-button"><i class="fab fa-google fa-1x"></i> </a> 
-				<a href="#" class="neo-button"><i class="fab fa-youtube fa-1x"></i> </a>
-				<a href="#" class="neo-button"><i class="fab fa-twitter fa-1x"></i> </a>
-			</div> -->
 			  
 			 <div class="profile mt-5">
 			 
